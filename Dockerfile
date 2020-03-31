@@ -22,6 +22,8 @@ COPY --from=builder /go/bin/slack-notify /usr/bin/slack-notify
 
 ENV VAULT_VERSION 1.0.2
 
+RUN sed -i 's/http\:\/\/dl-cdn.alpinelinux.org\/alpine/http\:\/\/mirror.leaseweb.com\/alpine/g' /etc/apk/repositories
+
 RUN apk update \
 	&& apk upgrade \
 	&& apk add \
